@@ -14,7 +14,7 @@
   left: 0;
   width: 100%;
   overflow: hidden;
-  font-size: 28px;
+  font-size: 14px;
   display: flex;
   align-items: flex-end;
   .tip {
@@ -31,7 +31,7 @@
 
 .loading, .loaded {
   text-align: center;
-  font-size: 24px;
+  font-size: 12px;
   padding: 12px;
   //animation: loading infinite 1000ms ease;
 }
