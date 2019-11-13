@@ -32,7 +32,7 @@ const initialProps = {
   footerLoadedText: '暂无更多内容',
   scrollTop: 0,
   touchScrollTop: 0,
-  onScrollToLower: () => {},
+  onScrollToLower: () => { },
   className: '',
   onPullDownRefresh: null,
   hasMore: false,
@@ -95,38 +95,38 @@ class ListView extends Component {
     };
     //taro scrollView 组建scrollY无效
     return <Skeleton isLoaded={isLoaded || isError} selector={selector}>
-        <ScrollView ref={node => {
+      <ScrollView ref={node => {
         this.scrollView = node;
       }} className={`${className} scroll-view`} style={newStyle} scrollY={canScrollY} lowerThreshold={0} onScrollToLower={this.handleScrollToLower} scrollWithAnimation onScroll={this.onScroll}>
-          <View style={{ minHeight: '100%', overflowY: 'hidden' }} onTouchMove={e => this.touchEvent(e)} onTouchEnd={e => this.touchEvent(e)} onTouchStart={e => this.touchEvent(e)} onTouchCancel={e => this.touchEvent(e)}>
-            <View style={trStyle} className="bodyView">
-              <View style={{ height: `${damping}px`, marginTop: `-${damping}px` }} className={`pullDownBlock ${onPullDownRefresh ? '' : 'unNeedBlock'}`}>
-                <View className="tip">
-                  {showTipFreedText && <View>{deactivate || tipFreedText}</View>}
-                  {showTipText && <View>{activate || tipText}</View>}
-                  
-                  {downLoading && <Loading color={circleColor} />}
-                </View>
+        <View style={{ minHeight: '100%', overflowY: 'hidden' }} onTouchMove={e => this.touchEvent(e)} onTouchEnd={e => this.touchEvent(e)} onTouchStart={e => this.touchEvent(e)} onTouchCancel={e => this.touchEvent(e)}>
+          <View style={trStyle} className="bodyView">
+            <View style={{ height: `${damping}px`, marginTop: `-${damping}px` }} className={`pullDownBlock ${onPullDownRefresh ? '' : 'unNeedBlock'}`}>
+              <View className="tip">
+                {showTipFreedText && <View>{deactivate || tipFreedText}</View>}
+                {showTipText && <View>{activate || tipText}</View>}
+
+                {downLoading && <Loading color={circleColor} />}
               </View>
-              
-              {showChildren && this.props.children}
-              <ResultPage renderError={this.props.renderError} renderEmpty={this.props.renderEmpty} launchError={launchError} launchEmpty={launchEmpty} isError={isError || false} isEmpty={isEmpty || false} emptyText={emptyText || ''} fetchInit={this.fetchInit} />
-              
-              {footerLoading && <View className="loading">
-                    {footerLoadingText}
-                  </View>}
-              
-              {customFooterLoading && this.props.renderFooterLoading}
-              
-              {footerLoaded && <View className="loaded">
-                    {noMore || footerLoadedText}
-                  </View>}
-              
-              {customFooterLoaded && this.props.renderFooterLoaded}
             </View>
+
+            {showChildren && this.props.children}
+            <ResultPage renderError={this.props.renderError} renderEmpty={this.props.renderEmpty} launchError={launchError} launchEmpty={launchEmpty} isError={isError || false} isEmpty={isEmpty || false} emptyText={emptyText || ''} fetchInit={this.fetchInit} />
+
+            {footerLoading && <View className="loading">
+              {footerLoadingText}
+            </View>}
+
+            {customFooterLoading && this.props.renderFooterLoading}
+
+            {footerLoaded && <View className="loaded">
+              {noMore || footerLoadedText}
+            </View>}
+
+            {customFooterLoaded && this.props.renderFooterLoaded}
           </View>
-        </ScrollView>
-      </Skeleton>;
+        </View>
+      </ScrollView>
+    </Skeleton>;
   }
   touchEvent = e => {
     const { type, touches } = e;
@@ -151,7 +151,7 @@ class ListView extends Component {
           // 拖动方向不符合的不处理
           if (height < 0 || touchScrollTop > 5) return;
           this.setState({ canScrollY: false });
-          e.preventDefault(); // 阻止默认的处理方式(阻止下拉滑动的效果)
+          // e.preventDefault(); // 阻止默认的处理方式(阻止下拉滑动的效果)
           if (height > 0 && height < (damping || 0)) {
             if (height < (distanceToRefresh || 0)) {
               this.setState({ needPullDown: true });

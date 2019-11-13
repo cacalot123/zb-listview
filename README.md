@@ -314,3 +314,8 @@ onScrollToLower = async (fn) => {
 };
 
 ```
+
+### 1.1.12 
+1.修改 list-view  
+ e.preventDefault() 频繁报错注释
+2.下拉刷新动作页面闪烁.透明度变化注释

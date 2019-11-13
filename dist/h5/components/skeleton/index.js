@@ -72,9 +72,9 @@ class Skeleton extends Component {
     const { list, bg, listRadius, parentRect } = this.state;
     const { isLoaded } = this.props; // 是否加载完成
     return <View>
-        <View style={{ opacity: isLoaded ? 1 : 0 }}>{this.props.children}</View>
-        {isLoaded ? '' : <View style={{ ...parentRect, backgroundColor: 'white', position: 'fixed', overflow: 'hidden' }}>
-            {bg.map(item => {
+      <View style={{ opacity: isLoaded ? 1 : 1 }}>{this.props.children}</View>
+      {isLoaded ? '' : <View style={{ ...parentRect, backgroundColor: 'white', position: 'fixed', overflow: 'hidden' }}>
+        {bg.map(item => {
           const { width, height, top, left } = item;
           return <View key={item} style={{
             background: 'white',
@@ -85,7 +85,7 @@ class Skeleton extends Component {
             position: 'fixed'
           }} />;
         })}
-            {list.map(item => {
+        {list.map(item => {
           const { width, height, top, left } = item;
           return <View key={item} className="skeletonBg" style={{
             width: `${width}px`,
@@ -95,7 +95,7 @@ class Skeleton extends Component {
             position: 'fixed'
           }} />;
         })}
-            {listRadius.map(item => {
+        {listRadius.map(item => {
           const { width, height, top, left } = item;
           return <View key={item} className="skeletonBg" style={{
             borderRadius: '50%',
@@ -106,8 +106,8 @@ class Skeleton extends Component {
             position: 'fixed'
           }} />;
         })}
-          </View>}
-      </View>;
+      </View>}
+    </View>;
   }
 }
 Skeleton.defaultProps = {
