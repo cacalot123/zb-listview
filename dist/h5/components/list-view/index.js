@@ -97,7 +97,7 @@ class ListView extends Component {
     return <Skeleton isLoaded={isLoaded || isError} selector={selector}>
       <ScrollView ref={node => {
         this.scrollView = node;
-      }} className={`${className} scroll-view`} style={newStyle} scrollY={canScrollY} lowerThreshold={0} onScrollToLower={this.handleScrollToLower} scrollWithAnimation onScroll={this.onScroll}>
+      }} className={`${className} scroll-view`} style={newStyle} onTouchMove={() => { return true }} scrollY={canScrollY} lowerThreshold={0} onScrollToLower={this.handleScrollToLower} scrollWithAnimation onScroll={this.onScroll}>
         <View style={{ minHeight: '100%', overflowY: 'hidden' }} onTouchMove={e => this.touchEvent(e)} onTouchEnd={e => this.touchEvent(e)} onTouchStart={e => this.touchEvent(e)} onTouchCancel={e => this.touchEvent(e)}>
           <View style={trStyle} className="bodyView">
             <View style={{ height: `${damping}px`, marginTop: `-${damping}px` }} className={`pullDownBlock ${onPullDownRefresh ? '' : 'unNeedBlock'}`}>
